@@ -1,11 +1,9 @@
 <?php
     include "../Includes/Connection.php";
 
-    $post = $_POST['Post'];
     $name = $_POST['Name'];
-    $password = $_POST['Password'];
 
-    $insert = "INSERT INTO Users (Post, Name, Password) VALUES ('$post', '$name', '$password')";
+    $insert = "INSERT INTO Sports (Name) VALUES ('$name')";
     $result = $connection->query($insert);
     $connection = null;
     

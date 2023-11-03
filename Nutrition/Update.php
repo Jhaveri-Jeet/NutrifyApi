@@ -3,11 +3,11 @@
 include "../Includes/Connection.php";
 
 $id = $_GET['id'];
-$post = $_POST['Post'];
-$name = $_POST['Name'];
-$password = $_POST['Password'];
+$name = $_POST['name'];
+$description = $_POST['description'];
+$dietPlanId = $_POST['dietPlanId'];
 
-$update = "UPDATE Users SET Post = '$post', Name = '$name', Password = '$password' WHERE Id = $id";
+$update = "UPDATE Nutrition SET Name = '$name', Description = '$description', DietPlanId = '$dietPlanId' WHERE Id = $id";
 $result = $connection->query($update);
 $connection = null;
 

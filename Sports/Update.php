@@ -3,11 +3,9 @@
 include "../Includes/Connection.php";
 
 $id = $_GET['id'];
-$post = $_POST['Post'];
 $name = $_POST['Name'];
-$password = $_POST['Password'];
 
-$update = "UPDATE Users SET Post = '$post', Name = '$name', Password = '$password' WHERE Id = $id";
+$update = "UPDATE Sports SET Name = '$name' WHERE Id = $id";
 $result = $connection->query($update);
 $connection = null;
 

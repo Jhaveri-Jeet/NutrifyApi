@@ -1,11 +1,10 @@
 <?php
     include "../Includes/Connection.php";
 
-    $post = $_POST['Post'];
-    $name = $_POST['Name'];
-    $password = $_POST['Password'];
+    $mealName = $_POST['MealName'];
+    $description = $_POST['Description'];
 
-    $insert = "INSERT INTO Users (Post, Name, Password) VALUES ('$post', '$name', '$password')";
+    $insert = "INSERT INTO Recipe (MealName, Description) VALUES ('$mealName', '$description')";
     $result = $connection->query($insert);
     $connection = null;
     

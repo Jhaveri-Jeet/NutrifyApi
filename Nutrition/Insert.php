@@ -1,11 +1,11 @@
 <?php
     include "../Includes/Connection.php";
 
-    $post = $_POST['Post'];
-    $name = $_POST['Name'];
-    $password = $_POST['Password'];
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $dietPlanId = $_POST['dietPlanId'];
 
-    $insert = "INSERT INTO Users (Post, Name, Password) VALUES ('$post', '$name', '$password')";
+    $insert = "INSERT INTO Nutrition (Name,Description,DietPlanId) VALUES ('$name', '$description', '$dietPlanId')";
     $result = $connection->query($insert);
     $connection = null;
     
