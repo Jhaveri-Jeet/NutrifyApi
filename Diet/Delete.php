@@ -1,16 +1,16 @@
 <?php
 
+header("Content-Type: application/json");
 include "../Includes/Connection.php";
 
-$id = $_GET['id'];
+$jsonString = file_get_contents('php://input');
+$data = json_decode($jsonString);
+
+$id = $data['id'];
 $delete = "DELETE FROM Diet WHERE Id = $id";
 $result = $connection->query($delete);
-$connection = null;
-
-header("Content-Type: application/json");
 
 if ($result->rowCount() > 0)
-    echo json_encode(array("status" => "success"));
+    echo json_encode(["status" => "success"]);
 else    
-    echo json_encode(array("status" => "error occurred"));
-?>
+    echo json_encode(["status" => "error occurred"]);
