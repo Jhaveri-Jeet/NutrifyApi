@@ -6,10 +6,14 @@ Welcome to the Nutrify App, a powerful nutrition tracking application designed s
 
 The Nutrify App utilizes a relational database with the following tables:
 
+### Roles
+- **Id**: Role identifier
+- **Name**: Role (Athlete, Coach, MainAdmin)
+
 ### Users
 - **Id**: User identifier
-- **Post**: User role (Athlete, Coach, MainAdmin)
-- **Name**: User's name
+- **RoleId**: Role's Id
+- **UserId**: User's Id
 - **Password**: User's password
 
 ### Athlete

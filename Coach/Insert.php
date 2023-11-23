@@ -1,18 +1,21 @@
 <?php
-    include "../Includes/Connection.php";
 
-    $name = $_POST['name'];
-    $gender = $_POST['gender'];
-    $age = $_POST['age'];
-    $sportId = $_POST['sportId'];
+header("Content-Type: application/json");
+include "../Includes/Connection.php";
 
-    $insert = "INSERT INTO Coach (Name,Gender,Age, SportsId) VALUES ('$name', '$gender', '$age', '$sportId')";
-    $result = $connection->query($insert);
-    $connection = null;
-    
-    header("Content-Type: application/json");
-    if($result->rowCount())
-        echo json_encode(array("status" => "success"));
-    else
-        echo json_encode(array("status" => "error occurred"));
-?>
+$jsonString = file_get_contents("php://input");
+$data = json_decode($jsonString);
+
+$name = $_POST['name'];
+$gender = $_POST['gender'];
+$age = $_POST['age'];
+$sportId = $_POST['sportId'];
+
+$insert = "INSERT INTO Coach (Name,Gender,Age, SportsId) VALUES ('$name', '$gender', '$age', '$sportId')";
+$result = $connection->query($insert);
+$connection = null;
+
+if ($result)
+    echo json_encode(["success" => true]);
+else
+    echo json_encode(["success" => false]);

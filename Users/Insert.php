@@ -1,17 +1,22 @@
 <?php
-    include "../Includes/Connection.php";
 
-    $post = $_POST['Post'];
-    $name = $_POST['Name'];
-    $password = $_POST['Password'];
+header("Content-Type: application/json");
+include "../Includes/Connection.php";
 
-    $insert = "INSERT INTO Users (Post, Name, Password) VALUES ('$post', '$name', '$password')";
-    $result = $connection->query($insert);
-    $connection = null;
-    
-    header("Content-Type: application/json");
-    if($result->rowCount())
-        echo json_encode(array("status" => "success"));
-    else
-        echo json_encode(array("status" => "error occurred"));
-?>
+$jsonString = file_get_contents("php://input");
+$data = json_decode($jsonString);
+
+$roleId = $data['roleId'];
+$userId = $data['userId'];
+$password = $data['password'];
+
+$query = "INSERT INTO Users (RoleId,UserId,Password) VALUES(?,?,?)";
+$params = [$roleId, $userId, $password];
+
+$statement = $connection->prepare($query);
+$result = $statement->execute($params);
+
+if ($result)
+    echo json_encode(["success" => true]);
+else
+    echo json_encode(["success" => false]);
