@@ -6,9 +6,9 @@ include "../Includes/Connection.php";
 $jsonString = file_get_contents("php://input");
 $data = json_decode($jsonString);
 
-$roleId = $data['roleId'];
-$userId = $data['userId'];
-$password = $data['password'];
+$roleId = $data->roleId;
+$userId = $data->userId;
+$password = $data->password;
 
 $query = "INSERT INTO Users (RoleId,UserId,Password) VALUES(?,?,?)";
 $params = [$roleId, $userId, $password];

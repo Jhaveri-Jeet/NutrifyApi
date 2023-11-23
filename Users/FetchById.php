@@ -6,7 +6,7 @@ include "../Includes/Connection.php";
 $jsonString = file_get_contents("php://input");
 $data = json_decode($jsonString);
 
-$id = $data['id'];
+$id = $data->id;
 
 $query = "SELECT * FROM Users WHERE UserId = ?";
 $params = [$id];

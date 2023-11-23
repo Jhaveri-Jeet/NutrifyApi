@@ -6,7 +6,7 @@ include "../Includes/Connection.php";
 $jsonString = file_get_contents("php://input");
 $data = json_decode($jsonString);
 
-$name = $data['name'];
+$name = $data->name;
 
 $query = "INSERT INTO Roles (Name) VALUES(?)";
 $params = [$name];

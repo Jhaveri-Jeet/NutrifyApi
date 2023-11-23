@@ -6,10 +6,10 @@ include "../Includes/Connection.php";
 $jsonString = file_get_contents("php://input");
 $data = json_decode($jsonString);
 
-$name = $_POST['name'];
-$gender = $_POST['gender'];
-$age = $_POST['age'];
-$sportId = $_POST['sportId'];
+$name = $data->name;
+$gender = $data->gender;
+$age = $data->age;
+$sportId = $data->sportId;
 
 $insert = "INSERT INTO Coach (Name,Gender,Age, SportsId) VALUES ('$name', '$gender', '$age', '$sportId')";
 $result = $connection->query($insert);
